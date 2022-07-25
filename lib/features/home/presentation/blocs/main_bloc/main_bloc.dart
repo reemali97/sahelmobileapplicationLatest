@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../../features.export.dart';
 
 class MainBloc extends Cubit<MainState>{

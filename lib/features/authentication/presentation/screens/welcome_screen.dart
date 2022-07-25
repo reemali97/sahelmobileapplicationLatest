@@ -4,6 +4,7 @@ import 'package:sahelmobileapplication/core/core.export.dart';
 import 'package:sahelmobileapplication/features/authentication/authentication.export.dart';
 
 class WelcomeScreen extends StatelessWidget {
+
   const WelcomeScreen({Key? key}) : super(key: key);
 
   @override
@@ -29,7 +30,7 @@ class WelcomeScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 40.0,),
                 const Text(
-                  'Welcome to Sahel',
+                  'welcome',
                   style: TextStyle(
                     fontSize: 30.0,
                     color: ColorHelper.primaryColor,

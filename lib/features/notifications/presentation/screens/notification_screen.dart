@@ -1,18 +1,23 @@
 import 'package:flutter/material.dart';
-
+import 'package:sahelmobileapplication/config/app_env.dart';
 import '../../../../core/core.export.dart';
+import '../widgets/notifications_item.dart';
 
 class NotificationScreen extends StatelessWidget {
   const NotificationScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
+      backgroundColor: Colors.white70,
       body: CustomScrollView(
+        controller: scrollController,
+
         slivers: [
-          SliverAppBar(
+          const SliverAppBar(
             centerTitle: true,
             toolbarHeight: 75,
+            floating: true,
             // leading: IconButton(
             //   onPressed: () {},
             //   icon: const Icon(Icons.search,size: 28.0,),
@@ -26,13 +31,23 @@ class NotificationScreen extends StatelessWidget {
               ),
             ),
             backgroundColor: ColorHelper.primaryColor,
-
           ),
-          SliverFillRemaining(
-            child: Center(child: Text('Notification Screen')),
+          SliverList(
+            delegate:SliverChildBuilderDelegate(
+
+              (context, index) {
+                return const Padding(
+                  padding:  EdgeInsets.symmetric(horizontal: 16.0,vertical: 6.0),
+                  child:  NotificationsItem(),
+                );
+              },
+              childCount: 20,
+
+            ),
           ),
         ],
       ),
     );
   }
 }
+

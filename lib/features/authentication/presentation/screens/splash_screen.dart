@@ -15,6 +15,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
+
     Future.delayed(
       const Duration(
         seconds: 1,
@@ -34,11 +35,15 @@ class _SplashScreenState extends State<SplashScreen> {
       ),
     );
     return Scaffold(
-      body: Image.asset(
-        ImageHelper.sahl,
-        fit: BoxFit.cover,
-        height: getScreenHeight(context),
-        width: getScreenWidth(context),
+      body: Column(
+        children: [
+          Image.asset(
+            ImageHelper.sahl,
+            fit: BoxFit.cover,
+            height: getScreenHeight(context),
+            width: getScreenWidth(context),
+          ),
+        ],
       ),
     );
   }

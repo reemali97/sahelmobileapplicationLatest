@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="35px" height="35px" viewBox="0 0 35 35" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group 2</title>
+    <defs>
+        <circle id="path-1" cx="17.5" cy="17.5" r="17.5"></circle>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="35" height="35" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Components/Unread-option-2" transform="translate(-290.000000, -23.000000)">
+            <g id="Group-2" transform="translate(290.000000, 23.000000)">
+                <g id="Group" fill="#EEEEEE" stroke="#A7A7A7" stroke-dasharray="2,1" stroke-linejoin="bevel" stroke-width="2">
+                    <use id="Oval" mask="url(#mask-2)" xlink:href="#path-1"></use>
+                </g>
+                <g id="noun_seen_3388044" transform="translate(10.000000, 13.000000)" fill="#A7A7A7" fill-rule="nonzero">
+                    <path d="M13.7136226,0.296833146 C13.3265035,-0.0946118245 12.6957975,-0.0995287388 12.3026226,0.285833146 L4.92762259,7.57483315 L1.72162259,4.25583315 C1.47366707,3.99738695 1.10642733,3.89128228 0.758842987,3.97766226 C0.411258641,4.06404224 0.136411289,4.32971527 0.0382852813,4.67416797 C-0.0598407264,5.01862067 0.0337399953,5.3892497 0.283622592,5.64583315 L4.19262259,9.69683315 C4.37969403,9.88768879 4.6353767,9.99572372 4.90262259,9.99683315 L4.91362259,9.99683315 C5.17582048,9.99599485 5.42720028,9.8922109 5.61362259,9.70783315 L13.7046226,1.70783315 C14.0955091,1.32016125 14.099532,0.689459797 13.7136226,0.296833146 Z" id="Path"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

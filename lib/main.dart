@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sahelmobileapplication/config/bloc_providers.dart';
 import 'core/core.export.dart';
-
-///import 'core/injection/injection.export.dart' as di;
 import 'features/authentication/authentication.export.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 Future<void> main() async {
+
   WidgetsFlutterBinding.ensureInitialized();
   await DependencyInjectionInit().init();
   BlocOverrides.runZoned(
@@ -20,9 +20,8 @@ Future<void> main() async {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
+  const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return listOfBlocProviders(
@@ -32,6 +31,31 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
+        supportedLocales: const[
+          Locale("en","US"),
+          Locale("ar","EG"),
+        ],
+        localizationsDelegates: const[
+          AppLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate
+
+        ],
+        localeResolutionCallback: (locale,supportedLocales){
+          for(var supportedLocale in  supportedLocales){
+            if (supportedLocale.languageCode == locale! .languageCode &&
+                supportedLocale.countryCode == locale.countryCode)
+            {
+              return supportedLocale;
+
+            }
+
+          }
+          return null;
+
+
+        },
         home: const SplashScreen(),
       ),
     );

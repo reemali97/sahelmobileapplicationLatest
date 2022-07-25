@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-class ColorHelper{
-
+class ColorHelper {
   static const Color colorPrimary = Color(0xff0F519F);
   static Color textColor = Colors.white70;
   static Color colorAccent = const Color(0xFFE8AD5B);
@@ -24,8 +23,13 @@ class ColorHelper{
   static const Color centerGreen = Color(0xff0FBDAD);
   static const Color lastGreen = Color(0xff0EA5A8);
   static const Color iconColor = Color(0xff50505A);
-  static const Color primaryColor=  Color.fromRGBO(12, 4, 172, 1);
-  static const Color primaryColor2=  Color.fromRGBO(24, 31, 77, 1);
+  static const Color primaryColor = Color.fromRGBO(12, 4, 172, 1);
+  static const Color primaryColor2 = Color.fromRGBO(24, 31, 77, 1);
+
+  static const Color forEvaluationTreatment = Color.fromRGBO(239, 239, 239, 1);
+  static const Color onGoingTreatment = Color.fromRGBO(253, 235, 221, 1);
+  static const Color evaluatedTreatment = Color.fromRGBO(233, 248, 236, 1);
+  static const Color otherTreatment = Color.fromRGBO(239, 243, 255, 1);
 }
 
 // class AppTextStyle {

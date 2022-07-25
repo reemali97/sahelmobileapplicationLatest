@@ -16,19 +16,18 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black12,
       body: DefaultTabController(
         length: tabBar.length,
         child: CustomScrollView(
-          slivers: [
 
+          slivers: [
             SliverAppBar(
               leading: IconButton(
                 onPressed: () {},
                 icon: const Icon(Icons.search,size: 28.0,),
               ),
-
               actions: [
-
                 IconButton(
                   onPressed: () {},
                   icon: const Icon(

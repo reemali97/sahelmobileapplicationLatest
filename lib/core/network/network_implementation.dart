@@ -7,6 +7,7 @@ import '../core.export.dart';
 
 
 abstract class NetworkInterface {
+
   /// [NetworkLinks] field that swap between base url when [get] url.
   Future<ApiResponse<T>> get<T>(
       String url, {
@@ -425,8 +426,6 @@ class NetworkInterfaceImpl implements NetworkInterface {
       case AppEnvironment.STAGING:
         _dio!.options.baseUrl = 'http://saheldev.ai-elements.com:81/Admin';
         break;
-
-
     }
   }
 

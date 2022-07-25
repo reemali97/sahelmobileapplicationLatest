@@ -1,6 +1,18 @@
+import 'package:flutter/material.dart';
+
 import '../core/core.export.dart';
+ScrollController? scrollController;
 
 const AppEnvironment env = AppEnvironment.STAGING;
+
+String handleBaseUrl() {
+  switch (env) {
+    case AppEnvironment.PRODUCTION:
+      return 'http://saheldev.ai-elements.com:81/Admin';
+    case AppEnvironment.STAGING:
+      return'http://saheldev.ai-elements.com:81/Admin';
+  }
+}
 // class ChoseEnv{
 //   static final Map<String, dynamic> headers = {};
 //
