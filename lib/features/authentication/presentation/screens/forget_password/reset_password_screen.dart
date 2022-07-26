@@ -7,7 +7,7 @@ class ResetPasswordScreen extends StatelessWidget {
    final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       appBar: AppBar(
         elevation: 1.0,
         leading: Padding(
@@ -34,29 +34,29 @@ class ResetPasswordScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(height: 30.0,),
-                  const Center(
+                   Center(
                     child: Text(
                       'Reset Password',
                       style: TextStyle(
                           fontFamily: FontsHelper.cairo,
-                        fontSize: 35.0
+                        fontSize: getScreenWidth(context) * 0.1,
 
                       ),
                     ),
                   ),
-                  const SizedBox(height: 50.0,),
+                  SizedBox(height: getScreenWidth(context) * 0.1,),
                   Text(
                     'Confirm your email and we will send the instructions.',
                     softWrap: true,
                     style: TextStyle(
                       fontFamily: FontsHelper.cairo,
                       color: Colors.grey[500],
-                      fontSize: 19.0
+                      fontSize: getScreenWidth(context) * 0.04,
                     ),
                   ),
-                  const SizedBox(height: 50.0,),
+                  SizedBox(height: getScreenWidth(context) * 0.1,),
                   const Text('Email'),
-                  const SizedBox(height: 30.0,),
+                  SizedBox(height: getScreenWidth(context) * 0.1,),
                   TextFieldApp(
                       height: 50,
                       isRTL: false,
@@ -79,19 +79,19 @@ class ResetPasswordScreen extends StatelessWidget {
                       hintStyle: const TextStyle(color: ColorHelper.greyColor),
                       hintText: 'aielements@sahel.com',
                   ),
-                  const SizedBox(height: 50.0,),
+                  SizedBox(height: getScreenWidth(context) * 0.1,),
                   ButtonApp(
                     borderRadius: 6.0,
-                    height: 60,
+                    height: getScreenWidth(context) * 0.15,
                     text: 'Send instructions',
-                    textStyle: const TextStyle(fontFamily: FontsHelper.cairo,fontSize: 18.0),
+                    textStyle:  TextStyle(fontFamily: FontsHelper.cairo,fontSize: getScreenWidth(context) * 0.05),
                     onPressed: () =>sendInstructions(context),
                     color: ColorHelper.primaryColor,
 
                   ),
                   SizedBox(
                     width: double.infinity,
-                    height: 300,
+                    height: getScreenHeight(context) * 0.3,
                     child: FittedBox(
                       child: SvgPicture.asset(
                         ImageHelper.sahlBackground,

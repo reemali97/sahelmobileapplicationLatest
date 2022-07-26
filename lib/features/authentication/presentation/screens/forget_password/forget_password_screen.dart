@@ -10,6 +10,7 @@ class ForgetPasswordScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Scaffold(
       appBar: AppBar(
+
         elevation: 1.0,
         leading: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -25,7 +26,6 @@ class ForgetPasswordScreen extends StatelessWidget {
         title: const Text('LOGIN',style: TextStyle(color: Colors.black,fontFamily: FontsHelper.cairo,fontSize: 22.0),),
       ),
       body: Padding(
-
         padding: const EdgeInsets.all(20.0),
         child: SingleChildScrollView(
           child: SizedBox(
@@ -38,15 +38,15 @@ class ForgetPasswordScreen extends StatelessWidget {
                   ImageHelper.logo,
                   width: getScreenWidth(context) * 0.69,
                 ),
-                const SizedBox(height: 60.0,),
-                 Align(
+                SizedBox(height: getScreenWidth(context) * 0.2,),
+                Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
                     'How do you want to reset the password?',
                     style: Theme.of(context).textTheme.caption,
                   ),
                 ),
-                const SizedBox(height: 50.0,),
+                SizedBox(height: getScreenWidth(context) * 0.1,),
                 const RadioButtonApp(
                   groupValue: 1,
                   title: 'Send a message to the email',
@@ -64,15 +64,14 @@ class ForgetPasswordScreen extends StatelessWidget {
                   toggleAble: true,
                   textStyle: TextStyle(fontFamily: FontsHelper.cairo,fontSize: 18.0),
                 ),
-                const SizedBox(height: 50.0,),
+                SizedBox(height: getScreenWidth(context) * 0.1,),
                 ButtonApp(
                   borderRadius: 6.0,
-                  height: 60,
+                  height: getScreenWidth(context) * 0.15,
                   text: 'Next',
                   textStyle: const TextStyle(fontFamily: FontsHelper.cairo,fontSize: 18.0),
                   onPressed: () =>onNext(context),
                   color: ColorHelper.primaryColor,
-
                 ),
               ],
             ),

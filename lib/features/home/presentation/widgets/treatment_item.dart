@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
 import '../../../../core/core.export.dart';
 import '../../../features.export.dart';
 
@@ -20,26 +19,28 @@ class TreatmentItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Padding(
+
       padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 8.0),
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
         elevation: 10.0,
         shadowColor: Colors.black,
         child: Column(
-
           children: [
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(
                 children: [
-                  const SizedBox(
-                    width: 16.0,
+                   SizedBox(
+                    width: getScreenWidth(context) *0.05,
                   ),
-                  SvgPicture.asset(folderIcon!),
-                  const SizedBox(
-                    width: 16.0,
+                  SvgPicture.asset(
+                    folderIcon!,
+                    height: getScreenWidth(context) *0.09,
+                  ),
+                   SizedBox(
+                    width: getScreenWidth(context) *0.05,
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -109,9 +110,12 @@ class TreatmentItem extends StatelessWidget {
                   const Spacer(
                     flex: 1,
                   ),
-                  SvgPicture.asset(statusIcon!),
-                  const SizedBox(
-                    width: 16.0,
+                  SvgPicture.asset(
+                    statusIcon!,
+                    height: getScreenWidth(context) * 0.09,
+                  ),
+                  SizedBox(
+                    width: getScreenWidth(context) *0.05,
                   ),
                 ],
               ),
@@ -122,11 +126,11 @@ class TreatmentItem extends StatelessWidget {
               padding: const EdgeInsets.all(2.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
-                children: const [
-                  SizedBox(width: 6.0,),
-                  Text('Distribute Date: ', style: TextStyle(color: Colors.black, fontFamily: FontsHelper.cairo)),
-                  Text('2022-07-20', style: TextStyle(color: Colors.black, fontFamily: FontsHelper.cairo)),
-                  SizedBox(width: 6.0,),
+                children:  [
+                  SizedBox(width: getScreenWidth(context) *0.01,),
+                  Text('Distribute Date: ', style: TextStyle(color: Colors.black, fontFamily: FontsHelper.cairo,fontSize: getScreenWidth(context)*0.035)),
+                  Text('2022-07-20', style: TextStyle(color: Colors.black, fontFamily: FontsHelper.cairo,fontSize: getScreenWidth(context)*0.035)),
+                  SizedBox(width: getScreenWidth(context) *0.01,),
                 ],
               ),
             ),

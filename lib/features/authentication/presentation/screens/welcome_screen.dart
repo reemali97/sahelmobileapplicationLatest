@@ -17,86 +17,88 @@ class WelcomeScreen extends StatelessWidget {
       body: Center(
         child: SingleChildScrollView(
           physics: const ScrollPhysics(),
-          child: SizedBox(
-            width: double.infinity,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SvgPicture.asset(
-                  ImageHelper.welcome,
-                  width: double.infinity,
-                  height: 220.0,
+          child: Column(
+            children: [
+              SvgPicture.asset(
+                ImageHelper.welcome,
+                width: double.infinity,
+                height: getScreenWidth(context) * 0.5,
+              ),
+              SizedBox(height: getScreenWidth(context) * 0.1,),
+              Text(
+                'welcome',
+                style: TextStyle(
+                  fontSize: getScreenWidth(context) * 0.08,
+                  color: ColorHelper.primaryColor,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: FontsHelper.cairo,
                 ),
-                const SizedBox(height: 40.0,),
-                const Text(
-                  'welcome',
-                  style: TextStyle(
-                    fontSize: 30.0,
+              ),
+              SizedBox(height: getScreenWidth(context) * 0.06,),
+              Text(
+                'Language',
+                style: TextStyle(
+                    fontSize: getScreenWidth(context) * 0.06,
                     color: ColorHelper.primaryColor,
                     fontWeight: FontWeight.bold,
-                    fontFamily: FontsHelper.cairo,
+                    fontFamily: FontsHelper.cairo),
+              ),
+              SizedBox(height: getScreenWidth(context) * 0.06,),
+              Row(
+                children:  const [
+                  Expanded(
+                    child: SizedBox(
+                      width: 145,
+                      child: RadioButtonApp(
+                        title: 'English',
+                        textStyle: TextStyle(
+                          fontWeight: FontWeight.bold,
+                            color: ColorHelper.primaryColor,
+                            fontFamily: FontsHelper.cairo),
+                        toggleAble: true,
+                        activeColor: ColorHelper.primaryColor,
+                        value: 1,
+                        groupValue: 1,
+                      ),
+                    ),
                   ),
-                ),
-                const SizedBox(height: 26.0,),
-                const Text('Language',style:TextStyle(fontSize: 22.0,color:ColorHelper.primaryColor,fontWeight: FontWeight.bold,fontFamily: FontsHelper.cairo),),
-                const SizedBox(height: 24.0,),
-                Row(
-                  children:  const [
-                    Expanded(
-                      child: SizedBox(
-                        width: 145,
-                        child: RadioButtonApp(
-                          title: 'English',
-                          textStyle: TextStyle(
+                  Expanded(
+                    child: SizedBox(
+                      width: 145,
+                      child: RadioButtonApp(
+                        title: 'العربية',
+                        toggleAble: true,
+                        textStyle: TextStyle(
                             fontWeight: FontWeight.bold,
-                              color: ColorHelper.primaryColor,
-                              fontFamily: FontsHelper.cairo),
-                          toggleAble: true,
-                          activeColor: ColorHelper.primaryColor,
-                          value: 1,
-                          groupValue: 1,
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      child: SizedBox(
-                        width: 145,
-                        child: RadioButtonApp(
-                          title: 'العربية',
-                          toggleAble: true,
-                          textStyle: TextStyle(
-                              fontWeight: FontWeight.bold,
 
-                              color: ColorHelper.primaryColor,
-                              fontFamily: FontsHelper.cairo),
-                          activeColor: ColorHelper.primaryColor,
-                          value: 1,
-                          groupValue: 1,
-                        ),
+                            color: ColorHelper.primaryColor,
+                            fontFamily: FontsHelper.cairo),
+                        activeColor: ColorHelper.primaryColor,
+                        value: 1,
+                        groupValue: 1,
                       ),
                     ),
-                  ],
-                ),
-                const SizedBox(height: 24.0,),
-                ButtonApp(
-                  onPressed: () => onNext(context),
-                  color: ColorHelper.primaryColor,
-                  width: getScreenWidth(context) *0.5,
-                  text: 'Next',
-                  textStyle: const TextStyle(fontFamily: FontsHelper.cairo,fontSize: 18),
-                ),
-              ],
-            ),
+                  ),
+                ],
+              ),
+              SizedBox(height: getScreenWidth(context) * 0.06,),
+              ButtonApp(
+                onPressed: () => onNext(context),
+                color: ColorHelper.primaryColor,
+                width: getScreenWidth(context) *0.5,
+                text: 'Next',
+                textStyle: const TextStyle(fontFamily: FontsHelper.cairo,fontSize: 18),
+              ),
+            ],
           ),
         ),
       ),
     );
   }
-  void onNext(BuildContext? context){
-    openNewPage(context!, LoginScreen());
-}
 
+  void onNext(BuildContext? context) {
+    openNewPage(context!, LoginScreen());
+  }
 }
 
 
