@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sahelmobileapplication/core/core.export.dart';
+import '../../../../core/core.export.dart';
 import '../../home.export.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -10,6 +10,7 @@ class HomeScreen extends StatelessWidget {
     const OnGoingScreen(),
     const EvaluatedScreen(),
     const OthersScreen(),
+
   ];
   var controller = TextEditingController();
 
@@ -20,7 +21,6 @@ class HomeScreen extends StatelessWidget {
       body: DefaultTabController(
         length: tabBar.length,
         child: CustomScrollView(
-
           slivers: [
             SliverAppBar(
               leading: IconButton(
@@ -37,12 +37,16 @@ class HomeScreen extends StatelessWidget {
                 ),
               ],
               backgroundColor: ColorHelper.primaryColor,
-              bottom: const TabBar(
-                tabs: [
+              bottom: TabBar(
+                labelStyle: TextStyle(
+                    fontSize: getScreenWidth(context) * 0.0274,
+                    fontWeight: FontWeight.bold),
+                tabs: const[
                   Tab(icon:Icon(Icons.post_add),text: 'ForEvaluation',),
                   Tab(icon:Icon(Icons.run_circle_outlined),text: 'On Going',),
                   Tab(icon:Icon(Icons.recommend),text: 'Evaluated',),
                   Tab(icon:Icon(Icons.folder_outlined),text: 'Others',),
+
                 ],
               ),
             ),

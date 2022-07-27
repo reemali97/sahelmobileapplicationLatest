@@ -20,7 +20,7 @@ class ListTileWidget extends StatelessWidget {
     this.onTap,
     this.leadingIcon =Icons.person_outline,
     this.trailing=Icons.arrow_forward_ios_outlined,
-    this.iconSize = 30.0,
+    this.iconSize ,
   }) : super(key: key);
 
   @override
@@ -30,10 +30,10 @@ class ListTileWidget extends StatelessWidget {
       hoverColor: Colors.transparent,
       title: Text(
         '$title',
-        style: textStyle ?? const TextStyle(color: ColorHelper.primaryColor),
+        style: textStyle ??  TextStyle(color: ColorHelper.primaryColor,fontSize:getScreenWidth(context) * 0.04 ),
       ),
       leading:  Icon(leadingIcon ,
-          size: iconSize,
+          size: iconSize??getScreenWidth(context) * 0.07,
           color: iconColor ?? ColorHelper.primaryColor),
       onTap: onTap ?? (){},
       trailing:  Icon(trailing, color: iconColor ??ColorHelper.primaryColor,),

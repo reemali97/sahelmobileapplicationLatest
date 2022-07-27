@@ -76,20 +76,18 @@ class LoginScreen extends StatelessWidget {
                       height: getScreenHeight(context) * 0.1,
                     ),
                     TextFieldApp(
-                      hintText: 'UserName',
                       controller: emailController,
-                      isRTL: false,
-                      height: getScreenWidth(context) * 0.12,
-                      inputFormatters: [RegExpValidator.clearWhitespace],
+                      labelText: 'Username',
+                      inputFormatters: [
+                        RegExpValidator.clearWhitespace
+                      ],
                     ),
                     SizedBox(
                       height: getScreenWidth(context) * 0.06,
                     ),
                     TextFieldApp(
-                      hintText: 'Password',
                       controller: passwordController,
-                      isRTL: false,
-                      height: getScreenWidth(context) * 0.12,
+                      labelText: 'Password',
                       obscureText: isVisible,
                       suffixIcon: IconButton(
                         icon: Icon(
@@ -98,6 +96,9 @@ class LoginScreen extends StatelessWidget {
                         ),
                         onPressed: () => showPassword(context),
                       ),
+                    ),
+                    SizedBox(
+                      height: getScreenWidth(context) * 0.01,
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 12.0),

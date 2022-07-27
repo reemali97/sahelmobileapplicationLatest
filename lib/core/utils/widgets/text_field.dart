@@ -1,66 +1,93 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:sahelmobileapplication/core/core.export.dart';
 
-import '../helper/color_helper.dart';
-/*
+import '../../core.export.dart';
+
 class TextFieldApp extends StatelessWidget {
-  final String? hintText;
-  final TextEditingController? controller;
-  final Widget? icon;
-  final bool? obscureText;
-  final int? maxLenth;
-  final int? minLines;
+  final double? height;
   final int? maxLines;
-  final bool? enable;
-  final TextInputType? keyboardType;
-  final InputBorder outlineInputBorder = OutlineInputBorder(
-      // borderSide: BorderSide(color:ColorHelper.colorPrimary ),
-      borderRadius: BorderRadius.circular(2));
-  final InputBorder unfocasInputBorder = OutlineInputBorder(
-      borderSide: BorderSide(color: Colors.grey),
-      borderRadius: BorderRadius.circular(2));
-  TextFieldApp(
-      {this.hintText,
-        this.controller,
-        this.icon,
-        this.maxLenth,
-        this.minLines,
-        this.enable,
-        this.maxLines,
-        this.obscureText,
-        this.keyboardType});
+  final double? cursorWidth;
+  final double? cursorHeight;
+  final double? borderRadius;
+  final Color? cursorColor;
+  final Color? borderColor;
+  final List<TextInputFormatter>? inputFormatters;
+  final FormFieldValidator<String>? validator;
+  final bool? readOnly;
+  final bool? showCursor;
+  final bool? obscureText;
+  final VoidCallback? onTap;
+  final ValueChanged<String>? onChanged;
+  final String? labelText;
+  final TextStyle? labelStyle;
+  final Widget? suffixIcon;
+  final TextEditingController? controller;
+
+  const TextFieldApp({
+    Key? key,
+    this.height,
+    this.maxLines,
+    this.cursorWidth,
+    this.cursorHeight,
+    this.borderRadius,
+    this.cursorColor,
+    this.borderColor,
+    this.inputFormatters,
+    this.validator,
+    this.readOnly ,
+    this.showCursor,
+    this.obscureText,
+    this.onTap,
+    this.onChanged,
+    this.labelText,
+    this.labelStyle,
+    this.suffixIcon,
+   required this.controller,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      controller: controller,
-      keyboardType: keyboardType,
-      obscureText: obscureText ?? false,
-      maxLength: maxLenth,
-      maxLines: maxLines,
-      enabled: enable ?? true,
-      minLines: minLines,
-      ///cursorColor: ColorHelper.colorPrimary,
-      decoration: InputDecoration(
-          suffixIcon: icon,
-          fillColor: Colors.white,
-          filled: true,
-         // counterStyle: TextStyle(color: ColorHelper.colorPrimary),
-          //labelStyle: TextStyle(color: ColorHelper.colorPrimary),
-          contentPadding: EdgeInsets.all(10.0),
-          labelText: hintText,
-         // focusColor: ColorHelper.colorPrimary,
-          enabledBorder: unfocasInputBorder,
-          focusedBorder: outlineInputBorder,
-          border: unfocasInputBorder,
-          disabledBorder: outlineInputBorder
+    return SizedBox(
+      height: height,
+      child: TextFormField(
+        maxLines: maxLines ?? 1,
+        controller: controller,
+        inputFormatters: inputFormatters ?? [] ,
+        validator: validator ?? (value){},
+        readOnly:readOnly ??false,
+        showCursor:showCursor ?? true,
+        obscureText:obscureText ?? false,
+        cursorWidth:cursorWidth ?? 1,
+        cursorColor: cursorColor ?? ColorHelper.primaryColor,
+        cursorHeight: cursorHeight ?? 20,
+        onTap: onTap ?? (){},
+        onChanged: onChanged ?? (text){},
+        decoration: InputDecoration(
+          contentPadding:const EdgeInsets.symmetric(vertical: 6.0, horizontal: 6.0),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(borderRadius ?? 2.0),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide:  BorderSide(color: borderColor?? ColorHelper.primaryColor, width: 1.0),
+            borderRadius: BorderRadius.circular(borderRadius ?? 2.0),
+          ),
+          labelText: labelText ?? '',
+          labelStyle:labelStyle ?? const TextStyle(
+            color: Colors.black,
+            fontSize: 18,
+            fontFamily: FontsHelper.cairo,
+            fontWeight: FontWeight.w500,
+          ),
+          suffixIcon:suffixIcon == null ? null : Padding(padding: const EdgeInsets.all(0.0), child: suffixIcon,),
+
+        ),
       ),
     );
   }
 }
-*/
 
-class TextFieldApp extends StatefulWidget {
+
+class TextFieldWidget extends StatefulWidget {
   final String hintText;
   final double? height;
   final TextEditingController controller;
@@ -92,7 +119,7 @@ class TextFieldApp extends StatefulWidget {
   final double? paddingIcon;
   final double marginHorizontal;
   final BorderRadius? borderRadius;
-  const TextFieldApp(
+  const TextFieldWidget(
       {Key? key,
         required this.controller,
         required this.hintText,
@@ -127,10 +154,10 @@ class TextFieldApp extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _TextFieldAppState createState() => _TextFieldAppState();
+  _TextFieldWidgetState createState() => _TextFieldWidgetState();
 }
 
-class _TextFieldAppState extends State<TextFieldApp> {
+class _TextFieldWidgetState extends State<TextFieldWidget> {
   String text = "";
 
   @override

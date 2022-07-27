@@ -11,7 +11,6 @@ abstract class AuthenticationRemoteData {
   Future<ApiResponse> getUserData(String userName,String token);
 
 }
-///hi there
 class AuthenticationRemoteDataImpl implements AuthenticationRemoteData{
   final NetworkInterface? networkImpl;
   AuthenticationRemoteDataImpl({this.networkImpl});

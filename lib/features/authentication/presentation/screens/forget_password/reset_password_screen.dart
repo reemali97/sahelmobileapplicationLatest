@@ -57,7 +57,7 @@ class ResetPasswordScreen extends StatelessWidget {
                   SizedBox(height: getScreenWidth(context) * 0.1,),
                   const Text('Email'),
                   SizedBox(height: getScreenWidth(context) * 0.1,),
-                  TextFieldApp(
+                  TextFieldWidget(
                       height: 50,
                       isRTL: false,
                       controller: emailController,

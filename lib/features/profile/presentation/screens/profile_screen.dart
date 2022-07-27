@@ -6,7 +6,6 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-
         toolbarHeight: 75,
         backgroundColor: ColorHelper.primaryColor,
         title:const Text(

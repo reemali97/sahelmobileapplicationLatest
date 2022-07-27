@@ -8,7 +8,6 @@ import '../core.export.dart';
 
 abstract class NetworkInterface {
 
-  /// [NetworkLinks] field that swap between base url when [get] url.
   Future<ApiResponse<T>> get<T>(
       String url, {
         Map<String, dynamic>? headers,
@@ -16,8 +15,6 @@ abstract class NetworkInterface {
         String? userToken,
       });
 
-  /// [NetworkLinks] field that swap between base url when [post] link to
-  /// [ABWAAB_URL_PRODUCTION] or [ABWAAB_MT_URL_PRODUCTION].
   Future<ApiResponse<T>> post<T>(
       String url, {
         String? data,
@@ -26,8 +23,6 @@ abstract class NetworkInterface {
         String? userToken,
       });
 
-  /// [NetworkLinks] field that swap between base url when [delete] link to
-  /// [ABWAAB_URL_PRODUCTION] or [ABWAAB_MT_URL_PRODUCTION].
   Future<ApiResponse<T>> delete<T>(
       String url, {
         String? data,
@@ -55,7 +50,7 @@ abstract class NetworkInterface {
 class NetworkInterfaceImpl implements NetworkInterface {
 
    Dio? _dio;
-  ///final AppEnvironment _appEnvironment;
+  //final AppEnvironment _appEnvironment;
   final bool enableLog;
 
   final Map<String, dynamic> _headers = {};
@@ -75,20 +70,6 @@ class NetworkInterfaceImpl implements NetworkInterface {
     // }
   }
 
-  /// [get] Method of Network.
-  ///
-  /// The data and status code returned from Response saved to [ApiResponse].
-  ///
-  /// [get] method have 2 status:
-  ///
-  /// 1.Successful State:
-  /// If the response is returned successfully, the [get] method will return
-  /// [ApiResponse] model with needed data, statusCode of response.
-  ///
-  /// 2.Error State:
-  /// If the response have a Network Error, the [get] method will return [ApiResponse]
-  /// with (Null) data and statusCode of Response, And will throw an [Exception] also.
-  ///
   @override
   Future<ApiResponse<T>> get<T>(
       String url, {
@@ -121,20 +102,6 @@ class NetworkInterfaceImpl implements NetworkInterface {
     }
   }
 
-  /// [post] Method of Network.
-  ///
-  /// The data and status code returned from Response saved to [ApiResponse].
-  ///
-  /// [post] method have 2 status:
-  ///
-  /// 1.Successful State:
-  /// If the response is returned successfully, the [get] method will return
-  /// [ApiResponse] model with needed data, statusCode of response.
-  ///
-  /// 2.Error State:
-  /// If the response have a Network Error, the [get] method will return [ApiResponse]
-  /// with (Null) data and statusCode of Response, And will throw an [Exception] also.
-  ///
   @override
   Future<ApiResponse<T>> post<T>(
       String url, {
@@ -164,20 +131,7 @@ class NetworkInterfaceImpl implements NetworkInterface {
     }
   }
 
-  /// [delete] Method of Network.
-  ///
-  /// The data and status code returned from Response saved to [ApiResponse].
-  ///
-  /// [delete] method have 2 status:
-  ///
-  /// 1.Successful State:
-  /// If the response is returned successfully, the [delete] method will return
-  /// [ApiResponse] model with needed data, statusCode of response.
-  ///
-  /// 2.Error State:
-  /// If the response have a Network Error, the [delete] method will return [ApiResponse]
-  /// with (Null) data and statusCode of Response, And will throw an [Exception] also.
-  ///
+
   @override
   Future<ApiResponse<T>> delete<T>(
       String url, {
@@ -333,7 +287,6 @@ class NetworkInterfaceImpl implements NetworkInterface {
     }
   }
 
-  /// That responsible for handling the exceptions and error that thrown from api.
   Future<ApiResponse<T>> _responseHandler<T>(ApiResponse<T> response) async {
     switch (response.statusCode) {
       case 200:
@@ -392,7 +345,6 @@ class NetworkInterfaceImpl implements NetworkInterface {
     }
   }
 
-  /// [_requestHandler] handle request [data, params, headers] that sent to Servers via Network.
   void _requestHandler(
       Map<String, dynamic>? headers,
       Map? params,
@@ -405,7 +357,6 @@ class NetworkInterfaceImpl implements NetworkInterface {
     if (userToken != null) _headers.addAll({"x-access-token": userToken});
   }
 
-  /// handle error message that passed to exceptions.
   Future<String> _errorMessageHandler(ApiResponse response) async {
     var currentLang ='';
     final errorMessages =
@@ -416,8 +367,6 @@ class NetworkInterfaceImpl implements NetworkInterface {
     return message!;
   }
 
-  /// [_handleBaseUrl] handle the [NetworkLinks]  to change the BASE_URL
-  /// to choose the {  networkLinks } URLs whether it be [AppEnvironment.PRODUCTION] or [AppEnvironment.STAGING]
   void _handleBaseUrl() {
     switch (env) {
       case AppEnvironment.PRODUCTION:
