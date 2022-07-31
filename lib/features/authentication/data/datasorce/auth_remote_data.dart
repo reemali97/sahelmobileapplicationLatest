@@ -1,15 +1,10 @@
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
-
 import '../../../../core/core.export.dart';
 
-
-
 abstract class AuthenticationRemoteData {
-
   Future<ApiResponse> getToken(String email , String password);
   Future<ApiResponse> getUserData(String userName,String token);
-
 }
 class AuthenticationRemoteDataImpl implements AuthenticationRemoteData{
   final NetworkInterface? networkImpl;
@@ -48,8 +43,4 @@ class AuthenticationRemoteDataImpl implements AuthenticationRemoteData{
         });
     return apiResponse ;
   }
-
-
-
-
 }
