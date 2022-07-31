@@ -50,9 +50,7 @@ abstract class NetworkInterface {
 class NetworkInterfaceImpl implements NetworkInterface {
 
    Dio? _dio;
-  //final AppEnvironment _appEnvironment;
   final bool enableLog;
-
   final Map<String, dynamic> _headers = {};
 
    NetworkInterfaceImpl({this.enableLog = false}) {
