@@ -160,20 +160,6 @@ class NetworkInterfaceImpl implements NetworkInterface {
     }
   }
 
-  /// [put] Method of Network.
-  ///
-  /// The data and status code returned from Response saved to [ApiResponse].
-  ///
-  /// [put] method have 2 status:
-  ///
-  /// 1.Successful State:
-  /// If the response is returned successfully, the [put] method will return
-  /// [ApiResponse] model with needed data, statusCode of response.
-  ///
-  /// 2.Error State:
-  /// If the response have a Network Error, the [put] method will return [ApiResponse]
-  /// with (Null) data and statusCode of Response, And will throw an [Exception] also.
-  ///
   @override
   Future<ApiResponse<T>> put<T>(
       String url, {
@@ -203,20 +189,6 @@ class NetworkInterfaceImpl implements NetworkInterface {
     }
   }
 
-  /// [patch] Method of Network.
-  ///
-  /// The data and status code returned from Response saved to [ApiResponse].
-  ///
-  /// [patch] method have 2 status:
-  ///
-  /// 1.Successful State:
-  /// If the response is returned successfully, the [patch] method will return
-  /// [ApiResponse] model with needed data, statusCode of response.
-  ///
-  /// 2.Error State:
-  /// If the response have a Network Error, the [patch] method will return [ApiResponse]
-  /// with (Null) data and statusCode of Response, And will throw an [Exception] also.
-  ///
   @override
   Future<ApiResponse<T>> patch<T>(
       String url, {
@@ -246,20 +218,6 @@ class NetworkInterfaceImpl implements NetworkInterface {
     }
   }
 
-  /// Generic Method of Network used for [get, post, put, delete, patch] Methods
-  ///
-  /// The data and status code returned from Response saved to [ApiResponse].
-  ///
-  /// [_networkMethods] method have 2 status:
-  ///
-  /// 1.Successful State:
-  /// If the response is returned successfully, the [get] method will return
-  /// [ApiResponse] model with needed data, statusCode of response.
-  ///
-  /// 2.Error State:
-  /// If the response have a Network Error, the [get] method will return [ApiResponse]
-  /// with (Null) data and statusCode of Response, And will throw an [Exception] also.
-  ///
   Future<ApiResponse<T>> _networkMethods<T>({
     required Future<Response> method,
   }) async {
