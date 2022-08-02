@@ -31,6 +31,23 @@ class ErrorGetTokenState extends LoginState {
      this.error,
   });
 
+  ///[copyWith] function
+  /// It is just function from the same data type of class to call it in constructor
+  /// when we call this class.
+  ///
+  /// We use this function to return the state multi time in new value
+  /// or to rebuild UI.
+  ///
+  ///
+  /// In this function we check between the old & New value of state
+  /// and return it.
+  ///
+  /// The primary benefit of using [copyWith] is that you don't change the original object,
+  /// but instead return a new object with the same properties as the original,
+  /// but with the values you specify.
+  ///
+  ///
+  ///
   ErrorGetTokenState copyWith({
      String? error,
 

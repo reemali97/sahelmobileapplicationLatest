@@ -9,11 +9,13 @@ class TextFieldApp extends StatelessWidget {
   final double? cursorWidth;
   final double? cursorHeight;
   final double? borderRadius;
+  final double? borderSideWidth;
   final Color? cursorColor;
   final Color? borderColor;
   final List<TextInputFormatter>? inputFormatters;
   final FormFieldValidator<String>? validator;
   final bool? readOnly;
+  final bool? enable;
   final bool? showCursor;
   final bool? obscureText;
   final VoidCallback? onTap;
@@ -21,6 +23,7 @@ class TextFieldApp extends StatelessWidget {
   final String? labelText;
   final TextStyle? labelStyle;
   final Widget? suffixIcon;
+  final Widget? prefixIcon;
   final TextEditingController? controller;
 
   const TextFieldApp({
@@ -30,6 +33,7 @@ class TextFieldApp extends StatelessWidget {
     this.cursorWidth,
     this.cursorHeight,
     this.borderRadius,
+    this.borderSideWidth =1.0,
     this.cursorColor,
     this.borderColor,
     this.inputFormatters,
@@ -42,7 +46,8 @@ class TextFieldApp extends StatelessWidget {
     this.labelText,
     this.labelStyle,
     this.suffixIcon,
-   required this.controller,
+    required this.controller,
+    this.enable = true, this.prefixIcon,
   }) : super(key: key);
 
   @override
@@ -50,6 +55,7 @@ class TextFieldApp extends StatelessWidget {
     return SizedBox(
       height: height,
       child: TextFormField(
+        enabled: enable,
         maxLines: maxLines ?? 1,
         controller: controller,
         inputFormatters: inputFormatters ?? [] ,
@@ -65,10 +71,11 @@ class TextFieldApp extends StatelessWidget {
         decoration: InputDecoration(
           contentPadding:const EdgeInsets.symmetric(vertical: 6.0, horizontal: 6.0),
           border: OutlineInputBorder(
+            borderSide: BorderSide(color:borderColor?? ColorHelper.primaryColor2),
             borderRadius: BorderRadius.circular(borderRadius ?? 2.0),
           ),
           focusedBorder: OutlineInputBorder(
-            borderSide:  BorderSide(color: borderColor?? ColorHelper.primaryColor, width: 1.0),
+            borderSide:  BorderSide(color: borderColor?? ColorHelper.primaryColor, width: borderSideWidth!),
             borderRadius: BorderRadius.circular(borderRadius ?? 2.0),
           ),
           labelText: labelText ?? '',
@@ -79,6 +86,7 @@ class TextFieldApp extends StatelessWidget {
             fontWeight: FontWeight.w500,
           ),
           suffixIcon:suffixIcon == null ? null : Padding(padding: const EdgeInsets.all(0.0), child: suffixIcon,),
+          prefixIcon:prefixIcon == null ? null : Padding(padding: const EdgeInsets.all(0.0), child: prefixIcon,),
 
         ),
       ),

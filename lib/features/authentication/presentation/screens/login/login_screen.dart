@@ -49,93 +49,111 @@ class LoginScreen extends StatelessWidget {
             elevation: 0.0,
             backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           ),
-          body: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: SingleChildScrollView(
-              physics: const ScrollPhysics(),
-              child: Form(
-                key: _formKey,
-                child: Column(
-                  children: [
-                    Text(
-                      'Login',
-                      style: TextStyle(
-                          fontFamily: FontsHelper.cairo,
-                          fontWeight: FontWeight.bold,
-                          fontSize: getScreenWidth(context) * 0.08),
+          body:LayoutBuilder(
+              builder: (_, constraints){
+                return SingleChildScrollView(
+                  physics: const BouncingScrollPhysics(),
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                        minWidth: constraints.maxWidth,
+                        minHeight: constraints.maxHeight
                     ),
-                    SizedBox(
-                      height: getScreenWidth(context) * 0.09,
-                    ),
-                    SvgPicture.asset(
-                      ImageHelper.login,
-                      width: double.infinity,
-                      height: getScreenWidth(context) * 0.45,
-                    ),
-                    SizedBox(
-                      height: getScreenHeight(context) * 0.1,
-                    ),
-                    TextFieldApp(
-                      controller: emailController,
-                      labelText: 'Username',
-                      inputFormatters: [
-                        RegExpValidator.clearWhitespace
-                      ],
-                    ),
-                    SizedBox(
-                      height: getScreenWidth(context) * 0.06,
-                    ),
-                    TextFieldApp(
-                      controller: passwordController,
-                      labelText: 'Password',
-                      obscureText: isVisible,
-                      suffixIcon: IconButton(
-                        icon: Icon(
-                          modeIcon,
-                          color: ColorHelper.primaryColor,
-                        ),
-                        onPressed: () => showPassword(context),
-                      ),
-                    ),
-                    SizedBox(
-                      height: getScreenWidth(context) * 0.01,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                      child: InkWell(
-                        highlightColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        focusColor: Colors.transparent,
-                        splashColor: Colors.transparent,
-                        onTap: () => forGetPassword(context),
-                        child: const Align(
-                          alignment: AlignmentDirectional.topStart,
-                          child: Text(
-                            'Forget Password',
-                            style: TextStyle(
-                                color: ColorHelper.primaryColor,
-                                fontFamily: FontsHelper.cairo,
-                                fontSize: 16.0),
+                    child: IntrinsicHeight(
+
+                      child: Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Form(
+                          key: _formKey,
+                          child: SizedBox(
+                            width:double.infinity,
+                            child: Column(
+                              children: [
+                                Text(
+                                  'Login',
+                                  style: TextStyle(
+                                      fontFamily: FontsHelper.cairo,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: getScreenWidth(context) * 0.08),
+                                ),
+                                const SizedBox(
+                                  height: 20.0,
+                                ),
+                                SvgPicture.asset(
+                                  ImageHelper.login,
+                                  width: double.infinity,
+                                  height: getScreenWidth(context) * 0.45,
+                                ),
+                                const SizedBox(
+                                  height: 20.0,
+                                ),
+                                const Spacer(flex: 1,),
+                                TextFieldApp(
+                                  controller: emailController,
+                                  labelText: 'Username',
+                                  inputFormatters: [
+                                    RegExpValidator.clearWhitespace
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: getScreenWidth(context) * 0.06,
+                                ),
+                                TextFieldApp(
+                                  controller: passwordController,
+                                  labelText: 'Password',
+                                  obscureText: isVisible,
+                                  suffixIcon: IconButton(
+                                    icon: Icon(
+                                      modeIcon,
+                                      color: ColorHelper.primaryColor,
+                                    ),
+                                    onPressed: () => showPassword(context),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 20.0,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                                  child: InkWell(
+                                    highlightColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    splashColor: Colors.transparent,
+                                    onTap: () => forGetPassword(context),
+                                    child: const Align(
+                                      alignment: AlignmentDirectional.topStart,
+                                      child: Text(
+                                        'Forget Password',
+                                        style: TextStyle(
+                                            color: ColorHelper.primaryColor,
+                                            fontFamily: FontsHelper.cairo,
+                                            fontSize: 16.0),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 20.0,
+                                ),
+                                ButtonApp(
+                                  onPressed: () => onLogin(context),
+                                  borderRadius: 4.0,
+                                  text: 'Login',
+                                  color: ColorHelper.primaryColor,
+                                  height: getScreenWidth(context) *0.13,
+                                  textStyle: const TextStyle(
+                                      fontFamily: FontsHelper.cairo, fontSize: 18.0),
+                                ),
+                                const Spacer(flex: 3,),
+                              ],
+                            ),
                           ),
                         ),
                       ),
                     ),
-                    SizedBox(
-                      height: getScreenWidth(context) * 0.05,
-                    ),
-                    ButtonApp(
-                      onPressed: () => onLogin(context),
-                      borderRadius: 4.0,
-                      text: 'Login',
-                      color: ColorHelper.primaryColor,
-                      height: getScreenWidth(context) *0.13,
-                      textStyle: const TextStyle(
-                          fontFamily: FontsHelper.cairo, fontSize: 18.0),
-                    ),
-                  ],
-                ),
-              ),
-            ),
+                  ),
+                );
+              }
           ),
         );
       },
@@ -161,4 +179,6 @@ class LoginScreen extends StatelessWidget {
     LoginBloc.get(context).add(PasswordVisibilityEvent());
   }
 }
+
+
 

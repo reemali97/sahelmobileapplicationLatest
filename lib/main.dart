@@ -6,8 +6,8 @@ import 'features/authentication/authentication.export.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 Future<void> main() async {
-
   WidgetsFlutterBinding.ensureInitialized();
+  await CacheHelper.init();
   await DependencyInjectionInit().init();
   BlocOverrides.runZoned(
     () {
@@ -40,17 +40,14 @@ class MyApp extends StatelessWidget {
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate
-
         ],
         localeResolutionCallback: (locale,supportedLocales){
-          for(var supportedLocale in  supportedLocales){
-            if (supportedLocale.languageCode == locale! .languageCode &&
-                supportedLocale.countryCode == locale.countryCode)
+          for(var supportedLocale in supportedLocales){
+            if (supportedLocale.languageCode == locale! .languageCode && supportedLocale.countryCode == locale.countryCode)
             {
               return supportedLocale;
 
             }
-
           }
           return null;
 

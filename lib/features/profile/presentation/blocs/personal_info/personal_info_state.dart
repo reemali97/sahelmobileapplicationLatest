@@ -42,3 +42,15 @@ class OnEditState extends PersonalInfoState {
   @override
   List<Object?> get props => [isEnable];
 }
+
+class SuccessSaveState extends PersonalInfoState {
+  final String? onSuccess;
+
+  SuccessSaveState({this.onSuccess});
+}
+
+class ErrorSaveState extends PersonalInfoState {
+  final String? onError;
+
+  ErrorSaveState({this.onError});
+}
