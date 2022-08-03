@@ -59,7 +59,7 @@ class ProfileScreen extends StatelessWidget {
               ),
               ListTileWidget(title: 'Language',leadingIcon: Icons.language,onTap:()=>showLangDialog(context) ,),
               const Divider(color: ColorHelper.greyColor,),
-              const ListTileWidget(title: 'Change Password',leadingIcon: Icons.lock_outline,),
+               ListTileWidget(title: 'Change Password',leadingIcon: Icons.lock_outline,onTap:()=>showChangePassDialog(context),),
               const Divider(color: ColorHelper.greyColor,),
               ListTileWidget(
                 title: 'Logout',
@@ -82,6 +82,9 @@ class ProfileScreen extends StatelessWidget {
   }
   void showLangDialog(BuildContext context){
     languageDialog(context: context);
+  }
+  void showChangePassDialog(BuildContext context){
+    changPasswordDialog(context: context);
   }
 
 }
