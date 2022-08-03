@@ -27,7 +27,7 @@ class _PersonalInfoScreenState extends State<PersonalInfoScreen> {
      fatherNameController.text =Auth.currentUser!.user!.nationalityCode!   ;
      grandpaNameController.text=Auth.currentUser!.user!.fullName!   ;
      familyNameController.text=Auth.currentUser!.user!.lastName! ;
-     phoneNumberController.text =Auth.currentUser!.user!.lastName! ?? ''  ;
+     phoneNumberController.text =Auth.currentUser!.user!.lastName!  ;
      emailController.text =Auth.currentUser!.user!.email!   ;
      imageUrl =Auth.currentUser!.user!.firstName!  ;
   }
