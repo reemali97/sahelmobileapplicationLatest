@@ -7,25 +7,22 @@ Future<void> languageDialog({BuildContext? context}) async {
     barrierDismissible: true,
     builder: (BuildContext context) {
       return AlertDialog(
-        title: const Text('Language'),
+        title: const Center(
+            child: Text(
+          'Language',
+          style: TextStyle(fontFamily: FontsHelper.cairo),
+        )),
         content: SizedBox(
           height: 100,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              dialogButton(title: 'العربية'),
-              dialogButton(title: 'English'),
-
+              dialogButton(title: 'العربية',onPressed: ()=>Navigator.pop(context),),
+              dialogButton(title: 'English',onPressed: ()=>Navigator.pop(context),),
             ],
           ),
         ),
-        actions: <Widget>[
-          TextButton(
-            child: const Text('Approve'),
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-          ),
-        ],
       );
     },
   );
@@ -35,12 +32,12 @@ Widget dialogButton({
   String? title,
   Color? buttonColor,
   Color? textColor,
-  Function? onPressed
+  VoidCallback? onPressed
 }) {
   return SizedBox(
     width: double.infinity,
     child: MaterialButton(
-      onPressed: () {},
+      onPressed: onPressed ?? (){} ,
       color: buttonColor ?? ColorHelper.primaryColor,
       child: Text(
         '$title',

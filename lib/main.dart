@@ -8,6 +8,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await CacheHelper.init();
+  
   await DependencyInjectionInit().init();
   BlocOverrides.runZoned(
     () {
