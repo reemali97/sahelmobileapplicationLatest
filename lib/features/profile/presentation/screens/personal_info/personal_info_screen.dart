@@ -4,9 +4,7 @@ import 'package:sahelmobileapplication/core/core.export.dart';
 import 'package:sahelmobileapplication/features/features.export.dart';
 
 class PersonalInfoScreen extends StatefulWidget {
-
   PersonalInfoScreen({Key? key}) : super(key: key);
-
   @override
   State<PersonalInfoScreen> createState() => _PersonalInfoScreenState();
 }
