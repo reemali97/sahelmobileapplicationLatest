@@ -6,7 +6,9 @@ import '../../../features/features.export.dart';
 import '../../core.export.dart';
 
 class Auth {
+
   Auth._();
+
   static UserModel? currentUser;
 
   static Future<UserModel?> getUserFromPref() async {
@@ -20,7 +22,6 @@ class Auth {
     Map<String, dynamic> userMap = json.decode(jsonUser);
     return UserModel.fromJson(userMap);
   }
-
 
 
   static Future updateUserInPref({UserModel? user}) async {

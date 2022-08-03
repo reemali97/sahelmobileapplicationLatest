@@ -41,8 +41,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     }
   }
 
-  Future<dynamic> _getUserData(
-      {String? userName, String? token, context}) async {
+  Future<dynamic> _getUserData({String? userName, String? token, context}) async {
     UserModel? userModel;
 
     ApiResponse? apiResponse;
