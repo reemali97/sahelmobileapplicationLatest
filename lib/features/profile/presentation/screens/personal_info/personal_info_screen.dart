@@ -299,6 +299,13 @@ class _PersonalInfoScreenState extends State<PersonalInfoScreen> {
     PersonalInfoBloc.get(context).add(OnEditEvent());
   }
   Future<void> addImage(BuildContext context) async {
-    await AddImageDialog.showAddImageDialog(context: context);
+    ///await AddImageDialog.showAddImageDialog(context: context);
+    profileImage = await OpenGallery.getGalleryImage(image: profileImage)
+        .then((value) {})
+        .catchError((onError) {
+      debugPrint('onError $onError');
+      ShowToastSnackBar.showSnackBars(context, message: '$onError');
+    });
+    setState((){});
   }
 }
