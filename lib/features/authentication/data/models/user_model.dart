@@ -1,5 +1,5 @@
 class UserModel {
-  List<String>? role;
+  List<String>? role; 
   User? user;
   Group? group;
 

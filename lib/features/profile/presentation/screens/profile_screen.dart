@@ -84,7 +84,7 @@ class ProfileScreen extends StatelessWidget {
     languageDialog(context: context);
   }
   void showChangePassDialog(BuildContext context){
-    changPasswordDialog(context: context);
+    ChangePasswordDialog.showChangPasswordDialog(context: context);
   }
 
 }
