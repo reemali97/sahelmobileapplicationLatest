@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:sahelmobileapplication/core/core.export.dart';
+import '../../../../../core/core.export.dart';
 class LanguageDialog{
-  static Future<void> languageDialog({BuildContext? context}) async {
+  static Future<void> showLanguageDialog({BuildContext? context}) async {
     return showDialog(
       context: context!,
       barrierDismissible: true,
       builder: (BuildContext context) {
         return AlertDialog(
+
           title: const Center(
               child: Text(
                 'Language',
-                style: TextStyle(fontFamily: FontsHelper.cairo),
+                style: TextStyle(fontFamily: FontsHelper.cairo,color: ColorHelper.primaryColor),
               )),
           content: SizedBox(
-
             height: 100,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -56,7 +56,5 @@ class LanguageDialog{
     Navigator.pop(context!);
 
   }
-
-
 
 }

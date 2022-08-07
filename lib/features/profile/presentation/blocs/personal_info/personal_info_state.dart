@@ -1,5 +1,6 @@
+import 'dart:io';
+
 import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
 
 abstract class PersonalInfoState extends Equatable {
   @override
@@ -47,6 +48,9 @@ class SuccessSaveState extends PersonalInfoState {
   final String? onSuccess;
 
   SuccessSaveState({this.onSuccess});
+
+
+
 }
 
 class ErrorSaveState extends PersonalInfoState {
@@ -54,3 +58,14 @@ class ErrorSaveState extends PersonalInfoState {
 
   ErrorSaveState({this.onError});
 }
+
+class SuccessGetImageState extends PersonalInfoState{
+  final File? profileImage;
+  SuccessGetImageState({this.profileImage});
+}
+
+class ErrorGetImageState extends PersonalInfoState{
+  final String? onError;
+  ErrorGetImageState({this.onError});
+}
+

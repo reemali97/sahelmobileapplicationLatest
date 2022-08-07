@@ -82,16 +82,16 @@ class ProfileScreen extends StatelessWidget {
     openNewPage(context, PersonalInfoScreen());
   }
 
-  void showLangDialog(BuildContext context) {
-    LanguageDialog.languageDialog(context: context);
+  void showLangDialog(BuildContext context) async{
+   await LanguageDialog.showLanguageDialog(context: context);
   }
 
-  void showChangePassDialog(BuildContext context) {
-    ChangePasswordDialog.showChangPasswordDialog(context: context);
+  void showChangePassDialog(BuildContext context) async{
+    await ChangePasswordDialog.showChangPasswordDialog(context: context);
   }
 
-  void onLogout(BuildContext context) {
-    openNewPage(context, LoginScreen(), popPreviousPages: true);
+  void onLogout(BuildContext context) async{
+    await LogoutDialog.showLogoutDialog(context: context);
   }
 }
 

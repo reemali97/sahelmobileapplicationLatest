@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 
 abstract class PersonalInfoEvent extends Equatable {
   @override
@@ -27,3 +28,10 @@ class OnSaveEvent extends PersonalInfoEvent {
     this.imageUrl,
   });
 }
+
+class AddProfileImageEvent extends PersonalInfoEvent {
+  final BuildContext? context;
+  AddProfileImageEvent({this.context});
+}
+
+
