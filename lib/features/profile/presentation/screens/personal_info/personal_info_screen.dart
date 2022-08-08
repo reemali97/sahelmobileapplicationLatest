@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sahelmobileapplication/core/core.export.dart';
@@ -21,8 +20,11 @@ class _PersonalInfoScreenState extends State<PersonalInfoScreen> {
   String? imageUrl;
   bool isEnable=false;
   File? profileImage;
+
+
   @override
   void initState() {
+
     super.initState();
      employeeNameController.text =Auth.currentUser!.user!.firstName!    ;
      fatherNameController.text =Auth.currentUser!.user!.nationalityCode!   ;
@@ -92,18 +94,40 @@ class _PersonalInfoScreenState extends State<PersonalInfoScreen> {
                   //TODO: Don't forget to make hero here.
                   profileImage == null
                       ? Stack(
-                    alignment: AlignmentDirectional.bottomCenter,
-                    children: [
-                      const CircleAvatarWidget(radius: 50,),
-                      IconButton(onPressed: ()=>addImage(context), icon: const Icon(Icons.add)),
-                    ],
-                  )
-                      : CircleAvatar(
-                    radius: 55.0,
-                    backgroundImage: profileImage == null
-                        ? const NetworkImage('https://img.freepik.com/free-photo/calm-handsome-bearded-caucasian-man-with-curious-expression-points-thumb-aside-blank-space-demonstrates-good-promo-place-your-advertising-wears-hoodie-poses-yellow-wall_273609-42131.jpg?w=1060&t=st=1652027475~exp=1652028075~hmac=d748afab2e433d0c9d4f52f3e571c59b695b27195276c85d96b11ef406835256')
-                        : FileImage(profileImage!) as ImageProvider,
-                  ),
+                          alignment: AlignmentDirectional.bottomCenter,
+                          children: [
+                            const CircleAvatarWidget(
+                              radius: 50,
+                              backgroundColor: Colors.grey,
+                            ),
+                            isEnable? IconButton(
+                                onPressed: () => addImage(context),
+                                icon: const Icon(Icons.add)):const SizedBox(),
+                          ],
+                        )
+                      : ClipOval(
+                        child: Stack(
+                            alignment: AlignmentDirectional.bottomCenter,
+                            children: [
+                              CircleAvatar(
+                                radius: 55.0,
+                                backgroundImage: profileImage == null
+                                    ? const NetworkImage(
+                                        'https://img.freepik.com/free-photo/calm-handsome-bearded-caucasian-man-with-curious-expression-points-thumb-aside-blank-space-demonstrates-good-promo-place-your-advertising-wears-hoodie-poses-yellow-wall_273609-42131.jpg?w=1060&t=st=1652027475~exp=1652028075~hmac=d748afab2e433d0c9d4f52f3e571c59b695b27195276c85d96b11ef406835256')
+                                    : FileImage(profileImage!) as ImageProvider,
+                              ),
+                              isEnable ? Container(
+                                width: 110,
+                                color: Colors.black26,
+                                  child: IconButton(
+                                      onPressed: () => addImage(context),
+                                      icon: const Icon(
+                                        Icons.add,
+                                        color: Colors.white,
+                                      ))):const SizedBox(),
+                            ],
+                          ),
+                      ),
                   const SizedBox(
                     height: 2.0,
                   ),
@@ -298,14 +322,8 @@ class _PersonalInfoScreenState extends State<PersonalInfoScreen> {
     debugPrint('${PersonalInfoBloc.get(context).isEnable!}');
     PersonalInfoBloc.get(context).add(OnEditEvent());
   }
-  Future<void> addImage(BuildContext context) async {
-    ///await AddImageDialog.showAddImageDialog(context: context);
-    profileImage = await OpenGallery.getGalleryImage(image: profileImage)
-        .then((value) {})
-        .catchError((onError) {
-      debugPrint('onError $onError');
-      ShowToastSnackBar.showSnackBars(context, message: '$onError');
-    });
-    setState((){});
+
+  Future<dynamic> addImage(BuildContext context) async {
+    await AddImageDialog.showAddImageDialog(context: context);
   }
 }

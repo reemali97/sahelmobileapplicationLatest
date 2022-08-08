@@ -55,13 +55,25 @@ class SuccessSaveState extends PersonalInfoState {
 
 class ErrorSaveState extends PersonalInfoState {
   final String? onError;
-
   ErrorSaveState({this.onError});
 }
 
 class SuccessGetImageState extends PersonalInfoState{
   final File? profileImage;
   SuccessGetImageState({this.profileImage});
+
+  SuccessGetImageState copyWith({
+    File? profileImage,
+  }) {
+    return SuccessGetImageState(
+      profileImage: profileImage ?? this.profileImage,
+    );
+  }
+
+  @override
+  List<Object?> get props => [profileImage];
+
+
 }
 
 class ErrorGetImageState extends PersonalInfoState{

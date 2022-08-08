@@ -47,19 +47,11 @@ class PersonalInfoBloc extends Bloc<PersonalInfoEvent, PersonalInfoState> {
 
   void _addProfileImage(AddProfileImageEvent event, Emitter<PersonalInfoState> emit) async{
     profileImage = await OpenGallery.getGalleryImage(image: profileImage)
-        .then((value) {})
         .catchError((onError) {
       debugPrint('onError $onError');
-      ///ShowToastSnackBar.showSnackBars(event.context!, message: '$onError');
+      ShowToastSnackBar.showSnackBars(event.context!, message: '$onError');
       emit(ErrorGetImageState(onError: onError.toString()));
     });
-
-    debugPrint('=================================================================');
-    debugPrint(profileImage.toString());
-    debugPrint('=================================================================');
-
-
-
     if(profileImage != null){
       emit(SuccessGetImageState(profileImage: profileImage));
     }
