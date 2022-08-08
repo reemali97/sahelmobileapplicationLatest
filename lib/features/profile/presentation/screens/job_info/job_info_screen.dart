@@ -217,3 +217,4 @@ class _JobInfoScreenState extends State<JobInfoScreen> {
     );
   }
 }
+

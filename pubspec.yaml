@@ -21,6 +21,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   intl: ^0.17.0
   shared_preferences: ^2.0.15
+  image_picker: ^0.8.5+3
+
+
   #Widget_Package
   flutter_svg: ^1.0.3
   fluttertoast: ^8.0.9

@@ -10,7 +10,7 @@ class AuthenticationRepositoriesImpl implements AuthenticationRepositories{
   });
   @override
   Future<ApiResponse> getToken(String username, String password,) async{
-    // try{
+     try{
       debugPrint('===============authRepoImpl=============');
       debugPrint('userName $username');
       debugPrint('password $password');
@@ -20,10 +20,10 @@ class AuthenticationRepositoriesImpl implements AuthenticationRepositories{
       debugPrint(apiResponse.data.toString());
       return apiResponse;
 
-    // }catch(onError){
-    //   debugPrint(onError.toString());
-    //   throw '';
-    // }
+    }catch(onError){
+      debugPrint(onError.toString());
+      throw '';
+    }
 
   }
 

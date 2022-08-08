@@ -24,7 +24,7 @@ class ProfileScreen extends StatelessWidget {
           padding: const EdgeInsets.all(16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children:   [
+            children:[
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 25.0,vertical: 35.0),
                 child: CircleAvatarWidget(
@@ -43,7 +43,7 @@ class ProfileScreen extends StatelessWidget {
                   fontSize: 18.0,
                 ),
               ),
-               ListTileWidget(title: 'Personal Info',onTap:() => openPersonalInfo(context),),
+              ListTileWidget(title: 'Personal Info',onTap:() => openPersonalInfo(context),),
               const Divider(color: ColorHelper.greyColor,),
               ListTileWidget(title: 'Job Info',onTap:()=> openJobInfo(context),),
               const Divider(color: ColorHelper.greyColor,),
@@ -59,13 +59,13 @@ class ProfileScreen extends StatelessWidget {
               ),
               ListTileWidget(title: 'Language',leadingIcon: Icons.language,onTap:()=>showLangDialog(context) ,),
               const Divider(color: ColorHelper.greyColor,),
-               ListTileWidget(title: 'Change Password',leadingIcon: Icons.lock_outline,onTap:()=>showChangePassDialog(context),),
+              ListTileWidget(title: 'Change Password',leadingIcon: Icons.lock_outline,onTap:()=>showChangePassDialog(context),),
               const Divider(color: ColorHelper.greyColor,),
               ListTileWidget(
                 title: 'Logout',
                 textStyle: const TextStyle(color: ColorHelper.redColor),
                 leadingIcon: Icons.logout,
-                onTap: () => openNewPage(context, LoginScreen(),popPreviousPages: true),
+                onTap: () => onLogout(context),
               ),
             ],
           ),
@@ -74,18 +74,24 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 
-  void openJobInfo(BuildContext context){
-    openNewPage(context,  JobInfoScreen());
-  }
-  void openPersonalInfo(BuildContext context){
-    openNewPage(context,PersonalInfoScreen());
-  }
-  void showLangDialog(BuildContext context){
-    languageDialog(context: context);
-  }
-  void showChangePassDialog(BuildContext context){
-    changPasswordDialog(context: context);
+  void openJobInfo(BuildContext context) {
+    openNewPage(context, JobInfoScreen());
   }
 
+  void openPersonalInfo(BuildContext context) {
+    openNewPage(context, PersonalInfoScreen());
+  }
+
+  void showLangDialog(BuildContext context) async{
+   await LanguageDialog.showLanguageDialog(context: context);
+  }
+
+  void showChangePassDialog(BuildContext context) async{
+    await ChangePasswordDialog.showChangPasswordDialog(context: context);
+  }
+
+  void onLogout(BuildContext context) async{
+    await LogoutDialog.showLogoutDialog(context: context);
+  }
 }
 

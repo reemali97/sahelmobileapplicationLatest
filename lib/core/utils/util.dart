@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_picker/image_picker.dart';
 
 
 Future<dynamic> openNewPage(BuildContext context, Widget widget,
@@ -127,3 +130,27 @@ void printFullText(String text){
 // String timeFormat({DateTime? date}){
 //   return DateFormat('hh:mm a').format(date!);
 // }
+
+class OpenGallery{
+  static final picker = ImagePicker();
+
+  static Future<dynamic> getGalleryImage({required File? image}) async {
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+    if (pickedFile != null) {
+      return image = File(pickedFile.path);
+    } else {
+      debugPrint('No Image selected.');
+      return Future.error('No Image selected.');
+    }
+  }
+  static Future<File?> openCamera({required File? image}) async {
+    final pickedFile = await picker.pickImage(source: ImageSource.camera);
+    if (pickedFile != null) {
+      return image = File(pickedFile.path);
+    } else {
+      debugPrint('No Image selected.');
+      return Future.error('No Image selected.');
+    }
+  }
+
+}
