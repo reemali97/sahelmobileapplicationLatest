@@ -124,13 +124,13 @@ class AddImageDialog {
   }
 
   static void openCamera(BuildContext context) async {
-    coverImage =
-        await OpenGallery.openCamera(image: coverImage).then((value) {
-      return null;
-    }).catchError((onError) {
-      debugPrint('onError $onError');
-      ShowToastSnackBar.showSnackBars(context, message: '$onError');
-    });
+    // coverImage =
+    //     await OpenGallery.openCamera(image: coverImage).then((value) {
+    //   return null;
+    // }).catchError((onError) {
+    //   debugPrint('onError $onError');
+    //   ShowToastSnackBar.showSnackBars(context, message: '$onError');
+    // });
   }
 
   static void openGallery(BuildContext context) {
