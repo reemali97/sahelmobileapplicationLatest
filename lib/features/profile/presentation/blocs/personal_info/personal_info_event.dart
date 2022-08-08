@@ -1,3 +1,6 @@
+
+import 'dart:io';
+
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +19,7 @@ class OnSaveEvent extends PersonalInfoEvent {
   final String? familyName;
   final String? phoneNumber;
   final String? email;
-  final String? imageUrl;
+  final File? imageUrl;
 
   OnSaveEvent({
     this.employeeName,

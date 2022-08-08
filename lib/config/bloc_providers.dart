@@ -15,7 +15,7 @@ MultiBlocProvider listOfBlocProviders({Widget? child}) {
       BlocProvider<MainBloc>(create: (context)=> MainBloc(),),
 
       ///Profile Feature Blocs
-      BlocProvider<PersonalInfoBloc>(create: (context)=> PersonalInfoBloc(),),
+      BlocProvider<PersonalInfoBloc>(create: (context)=> di.sl<PersonalInfoBloc>(),),
       BlocProvider<ChangePasswordBloc>(create: (context)=> di.sl<ChangePasswordBloc>(),),
 
 
