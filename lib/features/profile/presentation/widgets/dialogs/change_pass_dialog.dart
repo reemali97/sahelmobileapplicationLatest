@@ -11,7 +11,6 @@ class ChangePasswordDialog {
   static var iconsColor = ColorHelper.primaryColor;
 
   static Future<void> showChangPasswordDialog({BuildContext? context}) async {
-
     return showDialog(
       context: context!,
       barrierDismissible: true,
@@ -23,7 +22,7 @@ class ChangePasswordDialog {
               ShowToastSnackBar.showSnackBars(context, message: state.success);
             }
             if (state is ErrorChangePasswordState) {
-              ShowToastSnackBar.showSnackBars(context, message: state.onError);
+              ShowToastSnackBar.showSnackBars(context, message: state.errorChangePassModel!.detail);
             }
           },
           builder: (context, state) {
@@ -64,14 +63,6 @@ class ChangePasswordDialog {
                               color: iconsColor,
                             ),
                           ),
-                          validator: (value){
-                            bool isValid= RegExpValidator.passwordStrength(password: value.toString());
-                            if(!isValid){
-                              ShowToastSnackBar.showSnackBars(context, message: 'The password must be at least 8 characters and contain at least 1 uppercase character and 1 special character.');
-                              return;
-                            }
-                            return null;
-                          },
                         ),
                         const SizedBox(
                           height: 20,
@@ -94,14 +85,6 @@ class ChangePasswordDialog {
                               changePassBloc.newIcon,
                             ),
                           ),
-                          validator: (value){
-                            bool isValid= RegExpValidator.passwordStrength(password: value.toString());
-                            if(!isValid){
-                              ShowToastSnackBar.showSnackBars(context, message: 'The password must be at least 8 characters and contain at least 1 uppercase character and 1 special character.');
-                              return;
-                            }
-                            return null;
-                          },
                         ),
                         const SizedBox(
                           height: 20,
@@ -124,14 +107,6 @@ class ChangePasswordDialog {
                               changePassBloc.confirmIcon,
                             ),
                           ),
-                          validator: (value){
-                            bool isValid= RegExpValidator.passwordStrength(password: value.toString());
-                            if(!isValid){
-                              ShowToastSnackBar.showSnackBars(context, message: 'The password must be at least 8 characters and contain at least 1 uppercase character and 1 special character.');
-                            return;
-                            }
-                            return null;
-                          },
                         ),
                       ],
                     ),
@@ -209,8 +184,14 @@ class ChangePasswordDialog {
       return;
     }
     ChangePasswordBloc.get(context)
-        .onChangePassword(context:context!,userName:_userName ,newPassword:_newPassword ,currentPassword:_currentPassword)
-        .then((value) => {onClearControllers()});
+        .onChangePassword(
+            context: context!,
+            userName: _userName,
+            newPassword: _newPassword,
+            currentPassword: _currentPassword)
+        .then((value) => {onClearControllers()}).catchError((onError){
+
+    });
     Navigator.pop(context);
   }
 

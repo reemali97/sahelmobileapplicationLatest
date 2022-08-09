@@ -11,17 +11,12 @@ class NotificationScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white70,
       body: CustomScrollView(
-        controller: scrollController,
-
         slivers: [
           const SliverAppBar(
             centerTitle: true,
             toolbarHeight: 75,
             floating: true,
-            // leading: IconButton(
-            //   onPressed: () {},
-            //   icon: const Icon(Icons.search,size: 28.0,),
-            // ),
+          
             title: Text(
               'Notifications',
               style: TextStyle(

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sahelmobileapplication/features/features.export.dart';
 import '../../../../../core/core.export.dart';
-import '../../../domain/domain.export.dart';
-import 'change_password_state.dart';
+
 
 class ChangePasswordBloc extends Cubit<ChangePasswordState> {
   final ChangePassUseCases? changePassUseCases;
@@ -18,16 +18,25 @@ class ChangePasswordBloc extends Cubit<ChangePasswordState> {
       String? _userName =userName;
       String? _newPassword=newPassword;
       String? _currentPassword=currentPassword;
-    try {
       ApiResponse? apiResponse ;
+      ErrorChangePassModel errorChangePassModel;
+      try {
        await changePassUseCases!.onChangePassword(_userName!,_newPassword!,_currentPassword!).then((value) => {
          apiResponse = value
        });
 
        if(apiResponse!.data == true){
        emit(SuccessChangePasswordState(success: 'success'));
+       return ;
+       }
+       else{
+         errorChangePassModel = ErrorChangePassModel.fromJson(apiResponse!.data!);
+         ShowToastSnackBar.showSnackBars(context!, message: '${errorChangePassModel.detail}');
+         emit(ErrorChangePasswordState(errorChangePassModel:errorChangePassModel));
        }
     } catch (onError) {
+      errorChangePassModel = ErrorChangePassModel.fromJson(apiResponse!.data);
+      ShowToastSnackBar.showSnackBars(context!, message: '${errorChangePassModel.detail}');
       emit(ErrorChangePasswordState(onError: onError.toString()));
 
     }
