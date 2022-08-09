@@ -19,6 +19,7 @@ class PersonalInfoBloc extends Bloc<PersonalInfoEvent, PersonalInfoState> {
 
   bool? isEnable = false;
   File? profileImage;
+
   String? userName = Auth.currentUser!.user!.userName;
 
   void _onEdit(OnEditEvent event, Emitter<PersonalInfoState> emit) {
