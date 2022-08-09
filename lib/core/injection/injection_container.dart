@@ -26,17 +26,13 @@ class DependencyInjectionInit{
     ///init Use Cases
     ///Home Feature
     final authUseCase = authenticationUseCases(networkInterface);
-    final changePassUseCase = changePassUseCases(networkInterface);
+
 
     ///Profile Feature
 
     ///Register Use Case
     sl.registerLazySingleton(() => authUseCase);
     sl.registerLazySingleton(() => changePassUseCase);
-
-    ///Language
-    sl.registerLazySingleton(() => locale);
-
 
   }
 
@@ -54,6 +50,14 @@ class DependencyInjectionInit{
     _changePasswordRemoteDataImpl = ChangePasswordRemoteDataImpl(networkImpl: networkInterface);
     _changePasswordRepositoriesImpl = ChangePasswordRepositoriesImpl(changePasswordRemoteData:_changePasswordRemoteDataImpl );
     return ChangePassUseCases(changePasswordRepositories:_changePasswordRepositoriesImpl);
+  }
+
+  EditProfileDataUseCases editProfileUseCases(NetworkInterface networkInterface){
+    final EditProfileRemoteData _editProfileRemoteDataImpl;
+    final EditProfileDataRepositories _editProfileDataRepositoriesImpl;
+    _editProfileRemoteDataImpl = EditProfileRemoteDataImpl(networkImpl: networkInterface);
+    _editProfileDataRepositoriesImpl = EditProfileDataRepositoriesImpl(editProfileRemoteData: _editProfileRemoteDataImpl );
+    return EditProfileDataUseCases(editProfileDataRepositories: _editProfileDataRepositoriesImpl);
   }
 
 

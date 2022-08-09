@@ -68,7 +68,9 @@ class _PersonalInfoScreenState extends State<PersonalInfoScreen> {
                   ),
                   const Spacer(flex: 1,),
                   FloatingActionButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      onSave(context);
+                    },
                     child: const Icon(Icons.save),
                     backgroundColor: ColorHelper.primaryColor,
 
@@ -325,6 +327,18 @@ class _PersonalInfoScreenState extends State<PersonalInfoScreen> {
   void onEnable(BuildContext context) {
     debugPrint('${PersonalInfoBloc.get(context).isEnable!}');
     PersonalInfoBloc.get(context).add(OnEditEvent());
+  }
+
+  Future<void> onSave(BuildContext context) async {
+    // final File convertimage = await File(profileImage!.path);
+    PersonalInfoBloc.get(context).add(OnSaveEvent(
+        employeeName: employeeNameController.text,
+        fatherName: fatherNameController.text,
+        grandpaName: grandpaNameController.text,
+        familyName: fatherNameController.text,
+        email: emailController.text,
+        imageUrl: profileImage
+    ));
   }
 
   Future<dynamic> addImage(BuildContext context) async {

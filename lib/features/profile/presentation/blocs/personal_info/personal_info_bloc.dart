@@ -1,14 +1,13 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/core.export.dart';
 import '../../../../features.export.dart';
 
 class PersonalInfoBloc extends Bloc<PersonalInfoEvent, PersonalInfoState> {
-  static PersonalInfoBloc get(context) => BlocProvider.of(context);
-  PersonalInfoBloc() : super(PersonalInfoInitial()) {
+
     on<OnEditEvent>(_onEdit);
     on<OnSaveEvent>(_onSave);
     on<GetGalleryImageEvent>(_getProfileImageFromGallery);
@@ -17,29 +16,41 @@ class PersonalInfoBloc extends Bloc<PersonalInfoEvent, PersonalInfoState> {
   }
   bool? isEnable = false;
   File? profileImage;
+
   void _onEdit(OnEditEvent event, Emitter<PersonalInfoState> emit) {
     isEnable = !isEnable!;
     emit(OnEditState(isEnable: isEnable));
   }
 
-  void _onSave(OnSaveEvent event, Emitter<PersonalInfoState> emit) {
+  Future<void> _onSave(OnSaveEvent event, Emitter<PersonalInfoState> emit) async {
     String? employeeName = event.employeeName;
     String? fatherName = event.fatherName;
     String? grandpaName = event.grandpaName;
     String? familyName = event.familyName;
     String? phoneNumber = event.phoneNumber;
     String? email =event.email;
-    String? imageUrl =event.imageUrl;
+    File? imageUrl =event.imageUrl;
 
-    try{
+    try {
+      ApiResponse? apiResponse;
+      ApiResponse? apiResponseImage;
 
-      emit(SuccessSaveState(onSuccess: 'Edit successfully'));
-    }
-    catch(onError){
+      // await editProfileDataUseCases!
+      //     .onEditProfileData(employeeName!, fatherName!, grandpaName!,
+      //         familyName!, phoneNumber!, email!)
+      //     .then((value) => {apiResponse = value});
+
+      await editProfileDataUseCases!
+          .onEditProfileImage(imageUrl!, userName)
+          .then((value) => {apiResponseImage = value});
+//apiResponse!.data == true &&
+      if ( apiResponseImage!.data == true) {
+        emit(SuccessSaveState(onSuccess: 'Edit successfully'));
+      }
+    } catch (onError) {
       debugPrint(onError.toString());
       emit(ErrorSaveState(onError: onError.toString()));
     }
-
   }
 
   void _getProfileImageFromGallery(GetGalleryImageEvent event, Emitter<PersonalInfoState> emit) async{
