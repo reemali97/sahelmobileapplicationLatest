@@ -49,7 +49,7 @@ abstract class NetworkInterface {
 }
 class NetworkInterfaceImpl implements NetworkInterface {
 
-   Dio? _dio;
+  Dio? _dio;
   final bool enableLog;
   final Map<String, dynamic> _headers = {};
 
@@ -260,24 +260,24 @@ class NetworkInterfaceImpl implements NetworkInterface {
             : response.data['message_key'] == null
             ? 'NotFoundException'
             : await _errorMessageHandler(response);
-        throw Exception();
+        throw Exception('unAuth');
 
       case 406:
         final String _error = response.data == null
             ? 'NotFoundException'
             : await _errorMessageHandler(response);
-        throw Exception();
+        throw Exception('unAuth');
 
       case 422:
         String _error = '' ;
 
         if(response.data is String || response.data == null){
           _error = 'BadRequestException' ;
-          throw Exception();
+          throw Exception('unAuth');
 
         }else{
           _error = await _errorMessageHandler(response) ;
-          throw Exception();
+          throw Exception('unAuth');
 
         }
 
@@ -314,9 +314,8 @@ class NetworkInterfaceImpl implements NetworkInterface {
   }
 
   Future<String> _errorMessageHandler(ApiResponse response) async {
-    var currentLang ='';
-    final errorMessages =
-    await rootBundle.loadString('assets/json/api_messages.json');
+    var currentLang = '';
+    final errorMessages = await rootBundle.loadString('assets/json/api_messages.json');
     final data = json.decode(errorMessages) as Map<String, dynamic>;
     final messageKey = response.data['message_key'];
     final message = data[messageKey][currentLang];

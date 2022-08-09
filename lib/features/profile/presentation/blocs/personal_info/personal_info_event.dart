@@ -32,9 +32,14 @@ class OnSaveEvent extends PersonalInfoEvent {
   });
 }
 
-class AddProfileImageEvent extends PersonalInfoEvent {
+class GetGalleryImageEvent extends PersonalInfoEvent {
   final BuildContext? context;
-  AddProfileImageEvent({this.context});
+  GetGalleryImageEvent({this.context});
+}
+
+class GetCameraImageEvent extends PersonalInfoEvent {
+  final BuildContext? context;
+  GetCameraImageEvent({this.context});
 }
 
 

@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 
 import '../core/core.export.dart';
-ScrollController? scrollController;
 
 const AppEnvironment env = AppEnvironment.STAGING;
+
+
+
+
 String handleBaseUrl() {
   switch (env) {
     case AppEnvironment.PRODUCTION:

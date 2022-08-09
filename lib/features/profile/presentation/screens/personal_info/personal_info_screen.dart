@@ -24,7 +24,6 @@ class _PersonalInfoScreenState extends State<PersonalInfoScreen> {
 
   @override
   void initState() {
-
     super.initState();
      employeeNameController.text =Auth.currentUser!.user!.firstName!    ;
      fatherNameController.text =Auth.currentUser!.user!.nationalityCode!   ;
@@ -34,7 +33,6 @@ class _PersonalInfoScreenState extends State<PersonalInfoScreen> {
      emailController.text =Auth.currentUser!.user!.email!   ;
      imageUrl =Auth.currentUser!.user!.firstName!  ;
   }
-
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<PersonalInfoBloc, PersonalInfoState>(
@@ -44,6 +42,12 @@ class _PersonalInfoScreenState extends State<PersonalInfoScreen> {
         }
         if (state is SuccessGetImageState) {
           profileImage = state.profileImage;
+          if(profileImage != null){
+            Navigator.pop(context);
+          }
+        }
+        if (state is ErrorGetImageState) {
+          //ShowToastSnackBar.showSnackBars(context, message: '${state.onError}');
         }
       },
       builder: (context, state) {
@@ -99,12 +103,12 @@ class _PersonalInfoScreenState extends State<PersonalInfoScreen> {
                           alignment: AlignmentDirectional.bottomCenter,
                           children: [
                             const CircleAvatarWidget(
-                              radius: 50,
+                              radius: 55.0,
                               backgroundColor: Colors.grey,
                             ),
                             isEnable? IconButton(
                                 onPressed: () => addImage(context),
-                                icon: const Icon(Icons.add)):const SizedBox(),
+                                icon: const Icon(Icons.add,color: Colors.white,)):const SizedBox(),
                           ],
                         )
                       : ClipOval(
