@@ -17,6 +17,7 @@ class PersonalInfoBloc extends Bloc<PersonalInfoEvent, PersonalInfoState> {
   bool? isEnable = false;
   File? profileImage;
 
+
   void _onEdit(OnEditEvent event, Emitter<PersonalInfoState> emit) {
     isEnable = !isEnable!;
     emit(OnEditState(isEnable: isEnable));
