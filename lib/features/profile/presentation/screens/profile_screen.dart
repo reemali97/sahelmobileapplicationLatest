@@ -34,8 +34,8 @@ class ProfileScreen extends StatelessWidget {
                         'https://img.freepik.com/free-photo/calm-handsome-bearded-caucasian-man-with-curious-expression-points-thumb-aside-blank-space-demonstrates-good-promo-place-your-advertising-wears-hoodie-poses-yellow-wall_273609-42131.jpg?w=1060&t=st=1652027475~exp=1652028075~hmac=d748afab2e433d0c9d4f52f3e571c59b695b27195276c85d96b11ef406835256'),
               ),
               const SizedBox(height: 8.0,),
-              const Text(
-                'Account',
+               Text(
+                AppLocalizations.of(context)!.translate('first_String')!,
                 style: TextStyle(
                   fontFamily: FontsHelper.cairo,
                   fontWeight: FontWeight.w500,
@@ -59,7 +59,7 @@ class ProfileScreen extends StatelessWidget {
               ),
               ListTileWidget(title: 'Language',leadingIcon: Icons.language,onTap:()=>showLangDialog(context) ,),
               const Divider(color: ColorHelper.greyColor,),
-              ListTileWidget(title: 'Change Password',leadingIcon: Icons.lock_outline,onTap:()=>showChangePassDialog(context),),
+              ListTileWidget(title: 'Change password',leadingIcon: Icons.lock_outline,onTap:()=>showChangePassDialog(context),),
               const Divider(color: ColorHelper.greyColor,),
               ListTileWidget(
                 title: 'Logout',

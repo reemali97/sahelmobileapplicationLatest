@@ -10,6 +10,7 @@ MultiBlocProvider listOfBlocProviders({Widget? child}) {
       ///Authentication Feature Blocs
       BlocProvider<LoginBloc>(create: (context)=> di.sl<LoginBloc>(),),
       BlocProvider<ForgetPasswordBloc>(create: (context)=> ForgetPasswordBloc(),),
+      BlocProvider<ChangeLanguageBloc>(create: (context)=> ChangeLanguageBloc(),),
 
       ///Home Feature Blocs
       BlocProvider<MainBloc>(create: (context)=> MainBloc(),),

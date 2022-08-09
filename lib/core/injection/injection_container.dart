@@ -1,9 +1,9 @@
+import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:sahelmobileapplication/core/core.export.dart';
-import 'package:sahelmobileapplication/features/authentication/authentication.export.dart';
 import 'package:sahelmobileapplication/features/features.export.dart';
 import 'package:sahelmobileapplication/features/profile/data/datasorce/change_password_datasource.dart';
-import 'package:sahelmobileapplication/features/profile/domain/usecases/change_pass_usecases.dart';
+
 
 final GetIt sl = GetIt.instance;
 
@@ -13,23 +13,28 @@ class DependencyInjectionInit{
 
     ///init Network InterFace
     final networkInterface = NetworkInterfaceImpl(enableLog: true);
+
+    ///Localization
+    final locale = Locale.fromSubtags(languageCode: CacheHelper.getData(key: 'languages') ?? 'en');
+
+    ///Translate
     sl.registerLazySingleton(() => networkInterface);
+
     ///Bloc
     sl.registerFactory(() => LoginBloc(authenticationUseCases: sl()));
     sl.registerFactory(() => ChangePasswordBloc(changePassUseCases: sl()));
-    sl.registerFactory(() => PersonalInfoBloc(editProfileDataUseCases: sl()));
-    ///init Use Cases
-      ///Home Feature
-    final authUseCase = authenticationUseCases(networkInterface);
-      ///Profile Feature
-    final changePassUseCase = changePassUseCases(networkInterface);
-    final editProfileUseCase = editProfileUseCases(networkInterface);
 
+    ///init Use Cases
+    ///Home Feature
+    final authUseCase = authenticationUseCases(networkInterface);
+
+
+    ///Profile Feature
 
     ///Register Use Case
     sl.registerLazySingleton(() => authUseCase);
     sl.registerLazySingleton(() => changePassUseCase);
-    sl.registerLazySingleton(() => editProfileUseCase);
+
   }
 
   AuthenticationUseCases authenticationUseCases(NetworkInterface networkInterface){

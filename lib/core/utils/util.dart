@@ -133,7 +133,6 @@ void printFullText(String text){
 
 class OpenGallery{
   static final picker = ImagePicker();
-
   static Future<dynamic> getGalleryImage({required File? image}) async {
     final pickedFile = await picker.pickImage(source: ImageSource.gallery);
     if (pickedFile != null) {

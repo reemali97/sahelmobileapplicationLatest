@@ -1,8 +1,6 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import '../../../../../core/core.export.dart';
 import '../../../../features.export.dart';
-import '../../blocs/blocs.export.dart';
 
 class AddImageDialog {
   static final _formKey = GlobalKey<FormState>();
@@ -10,7 +8,6 @@ class AddImageDialog {
   static var newPassController = TextEditingController();
   static var confirmPassController = TextEditingController();
   static var iconsColor = ColorHelper.primaryColor;
-  static File? coverImage;
 
   static Future<void> showAddImageDialog({BuildContext? context}) async {
     return showDialog(
@@ -124,18 +121,11 @@ class AddImageDialog {
   }
 
   static void openCamera(BuildContext context) async {
-    // coverImage =
-    //     await OpenGallery.openCamera(image: coverImage).then((value) {
-    //   return null;
-    // }).catchError((onError) {
-    //   debugPrint('onError $onError');
-    //   ShowToastSnackBar.showSnackBars(context, message: '$onError');
-    // });
+    PersonalInfoBloc.get(context).add(GetCameraImageEvent(context: context));
   }
 
   static void openGallery(BuildContext context) {
-    PersonalInfoBloc.get(context).add(AddProfileImageEvent(context: context));
-    Navigator.pop(context);
+    PersonalInfoBloc.get(context).add(GetGalleryImageEvent(context: context));
   }
 
   static void onClose(BuildContext context) {
